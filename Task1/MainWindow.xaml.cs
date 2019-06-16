@@ -10,6 +10,10 @@ namespace Task1
     /// </summary>
     public partial class MainWindow : Window
     {
+        const string SiteUrl = "http://weather.service.msn.com/data.aspx?weasearchstr=";
+        const string ParamUrl = "&culture=en-US&weadegreetype=C&src=outlook";
+
+        //Создание главного окна
         public MainWindow()
         {
             InitializeComponent();
@@ -17,16 +21,16 @@ namespace Task1
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (textBox.Text != String.Empty)
+            if (CityNameInput.Text != String.Empty)
             {
-                string url = ("http://weather.service.msn.com/data.aspx?weasearchstr="+textBox.Text+"&culture=en-US&weadegreetype=C&src=outlook");
-                WebRequest request = WebRequest.Create(url);
-                WebResponse response = request.GetResponse();
-                using (Stream stream = response.GetResponseStream())
+                var url = ($"{SiteUrl}{CityNameInput.Text}{ParamUrl}");
+                var request = WebRequest.Create(url);
+                var response = request.GetResponse();
+                using (var stream = response.GetResponseStream())
                 {
-                    using (StreamReader reader = new StreamReader(stream))
+                    using (var reader = new StreamReader(stream))
                     {
-                        textBox1.Text = reader.ReadToEnd();
+                        WeatherInfoOutput.Text = reader.ReadToEnd();
                     }
                 }
                 response.Close();
