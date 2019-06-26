@@ -15,7 +15,6 @@ namespace Task1.View
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new ViewModels();
         }
     }
 }

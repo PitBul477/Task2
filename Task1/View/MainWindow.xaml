@@ -6,10 +6,14 @@
 	xmlns:local="clr-namespace:Task1"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:properties="clr-namespace:Task1.Properties"
-	Title="Прогноз погоды"
+	xmlns:vm="clr-namespace:Task1.ViewModel"
+	Title="{x:Static properties:Resources.TitleWindow}"
 	Width="793.697"
 	Height="450"
 	mc:Ignorable="d">
+	<Window.DataContext>
+		<vm:ViewModels />
+	</Window.DataContext>
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="12*" />
@@ -17,17 +21,16 @@
 		</Grid.RowDefinitions>
 		<Grid Grid.Column="1">
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="60*" />
-				<ColumnDefinition Width="40*" />
+				<ColumnDefinition Width="0.6*" />
+				<ColumnDefinition Width="0.4*" />
 			</Grid.ColumnDefinitions>
 			<ComboBox
 				Grid.Row="0"
 				Grid.Column="0"
 				Margin="20,12,10,12"
-				DisplayMemberPath="CityName"
-				ItemsSource="{Binding Path=Citys}"
-				SelectedItem="{Binding Path=SelectedCity}"
-				SelectedValuePath="ID" />
+				ItemTemplate="{Binding Path=CityName}"
+				ItemsSource="{Binding Path=Cities}"
+				SelectedItem="{Binding Path=SelectedCity}" />
 			<Button
 				x:Name="buttonGetInfoWeather"
 				Grid.Row="0"
@@ -36,7 +39,6 @@
 				Height="23"
 				Margin="10"
 				Command="{Binding GetInfoWeather}"
-				CommandParameter="{Binding SelectedCity}"
 				Content="{x:Static properties:Resources.Get}" />
 		</Grid>
 		<TextBox
