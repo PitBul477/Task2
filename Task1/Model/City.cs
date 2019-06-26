@@ -15,9 +15,8 @@ namespace Task1.Model
     {
         const string SiteUrl = "http://weather.service.msn.com/data.aspx?weasearchstr=";
         const string ParamUrl = "&culture=en-US&weadegreetype=C&src=outlook";
-        private string cityName = "";
-        static string cityUrl = "";
-        private int id;
+        private string cityName = string.Empty;
+        private string cityUrl = string.Empty;
 
         //Свойство для поля cityName
         public string CityName
@@ -26,18 +25,7 @@ namespace Task1.Model
             set
             {
                 cityName = value;
-                OnPropertChanged("");
-            }
-        }
-
-        //Свойство для поля id
-        public int ID
-        {
-            get { return id; }
-            set
-            {
-                id = value;
-                OnPropertChanged("");
+                OnPropertChanged(string.Empty);
             }
         }
 
@@ -48,7 +36,7 @@ namespace Task1.Model
             set
             {
                 cityUrl = value;
-                OnPropertChanged("");
+                OnPropertChanged(string.Empty);
             }
         }
 
@@ -61,7 +49,7 @@ namespace Task1.Model
         }
 
         //Функция вычисления cityUrl из других полей и с помощью get-запроса
-        public void URL()
+        public void GetUrl()
         {
             var url = ($"{SiteUrl}{CityName}{ParamUrl}");
             var request = WebRequest.Create(url);

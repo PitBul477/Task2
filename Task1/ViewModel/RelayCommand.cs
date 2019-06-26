@@ -9,16 +9,15 @@ namespace Task1.ViewModel
 {
     public class RelayCommand : ICommand
     {
-        private Action<object> execute;
-        private Func<object, bool> canExecute;
-
+        private Action execute;
+        private Predicate<object> canExecute;
         public event EventHandler CanExecuteChanged
         {
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-        public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
+        public RelayCommand(Action execute, Predicate<object> canExecute = null)
         {
             this.execute = execute;
             this.canExecute = canExecute;
@@ -26,14 +25,12 @@ namespace Task1.ViewModel
 
         public bool CanExecute(object parameter)
         {
-            if (canExecute != null)
-                return canExecute(parameter);
-            return true;
+            return canExecute(parameter);
         }
 
         public void Execute(object parameter)
         {
-            this.execute(parameter);
+            execute();
         }
     }
 }

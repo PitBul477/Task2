@@ -16,7 +16,7 @@ namespace Task1.ViewModel
         private City selectedCity;
 
         //Свойство для динамической коллекции городов
-        public ObservableCollection<City> Citys { get; set; }
+        public ObservableCollection<City> Cities { get; }
 
         //свойство для поля selectedCity, которое хранит в себе выбранный в ComboBox-е город
         public City SelectedCity
@@ -32,20 +32,19 @@ namespace Task1.ViewModel
         //конструктор модели представления, создаёт объекты для коллекции городов и задаёт команду
         public ViewModels()
         {
-            Citys = new ObservableCollection<City>
+            Cities = new ObservableCollection<City>
             {
-                new City {CityName = "Москва", ID = 1 },
-                new City {CityName = "Череповец", ID = 2 },
-                new City {CityName = "Токио", ID = 3 },
-                new City {CityName = "Осака", ID = 4 },
-                new City {CityName = "Квебек", ID = 5 }
+                new City {CityName = "Москва" },
+                new City {CityName = "Череповец" },
+                new City {CityName = "Токио" },
+                new City {CityName = "Осака" },
+                new City {CityName = "Квебек" }
             };
-            _GetInfoWeather = new RelayCommand((obj) => { selectedCity.URL(); });
+            GetInfoWeather = new RelayCommand(() => { selectedCity.GetUrl(); });
         }
 
-        private RelayCommand _GetInfoWeather;
         //команда на запуск формирования get-запроса
-        public RelayCommand GetInfoWeather { get { return _GetInfoWeather; } }
+        public RelayCommand GetInfoWeather { get; }
 
         //функция для обработки изменений, в качестве аргументра принимает название метода, вызвавшего изменение, ничего не возвращает
         public void OnPropertyChanged([CallerMemberName]string prop = "")
