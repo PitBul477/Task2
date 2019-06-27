@@ -63,7 +63,7 @@ namespace Task1.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Сохранять данные по городам?.
         /// </summary>
-        public static string DataCity {
+        internal static string Get {
             get {
                 return ResourceManager.GetString("DataCity", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace Task1.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Получить.
         /// </summary>
-        internal static string Get {
+        internal static string TitleWindow {
             get {
                 return ResourceManager.GetString("Get", resourceCulture);
             }

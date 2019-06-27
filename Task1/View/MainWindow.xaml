@@ -27,10 +27,17 @@
 			<ComboBox
 				Grid.Row="0"
 				Grid.Column="0"
-				Margin="20,12,10,12"
-				ItemTemplate="{Binding Path=CityName}"
+				Margin="20,12,20,12"
 				ItemsSource="{Binding Path=Cities}"
-				SelectedItem="{Binding Path=SelectedCity}" />
+				SelectedItem="{Binding Path=SelectedCity}">
+				<ComboBox.ItemTemplate>
+					<DataTemplate>
+						<StackPanel>
+							<TextBlock Text="{Binding Path=CityName}" />
+						</StackPanel>
+					</DataTemplate>
+				</ComboBox.ItemTemplate>
+			</ComboBox>
 			<Button
 				x:Name="buttonGetInfoWeather"
 				Grid.Row="0"
