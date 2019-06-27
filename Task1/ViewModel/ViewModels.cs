@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -15,8 +16,8 @@ namespace Task1.ViewModel
         public event PropertyChangedEventHandler PropertyChanged; 
         private City selectedCity;
 
-        //Свойство для динамической коллекции городов
-        public ObservableCollection<City> Cities { get; }
+        //Свойство для коллекции городов
+        public IEnumerable<City> Cities { get; }
 
         //свойство для поля selectedCity, которое хранит в себе выбранный в ComboBox-е город
         public City SelectedCity
@@ -32,8 +33,7 @@ namespace Task1.ViewModel
         //конструктор модели представления, создаёт объекты для коллекции городов и задаёт команду
         public ViewModels()
         {
-            Cities = new ObservableCollection<City>
-            {
+            Cities = new List<City> {
                 new City {CityName = "Москва" },
                 new City {CityName = "Череповец" },
                 new City {CityName = "Токио" },

@@ -63,16 +63,16 @@ namespace Task1.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Получить.
         /// </summary>
-        internal static string Get {
+        public static string Get {
             get {
                 return ResourceManager.GetString("Get", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Прогноз погоды.
         /// </summary>
-        internal static string TitleWindow {
+        public static string TitleWindow {
             get {
                 return ResourceManager.GetString("TitleWindow", resourceCulture);
             }
