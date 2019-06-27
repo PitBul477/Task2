@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Task1.ViewModel
@@ -10,8 +11,8 @@ namespace Task1.ViewModel
     //класс RelayCommand, реализующий интерфейс ICommand
     public class RelayCommand : ICommand
     {
-        private Action execute;
-        private Predicate<object> canExecute;
+        private Action _execute;
+        private Predicate<object> _canExecute;
 
         //событие, вызывающееся при изменении условий выполняемости команды
         public event EventHandler CanExecuteChanged
@@ -23,23 +24,23 @@ namespace Task1.ViewModel
         //конструктор класса RelayCommand
         public RelayCommand(Action execute, Predicate<object> canExecute = null)
         {
-            this.execute = execute;
+            _execute = execute ?? throw new ArgumentException();
             if (canExecute != null)
-                this.canExecute = canExecute;
+                _canExecute = canExecute;
         }
 
         //метод, определяющий, может ли команда выполняться
         public bool CanExecute(object parameter)
         {
-            if (canExecute != null)
-                return canExecute(parameter);
+            if (_canExecute != null)
+                return _canExecute(parameter);
             return true;
         }
 
         //метод, выполняющий команду
         public void Execute(object parameter)
         {
-            execute();
+            _execute();
         }
     }
 }

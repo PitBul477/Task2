@@ -14,7 +14,7 @@ namespace Task1.ViewModel
     {
         //событие изменения свойства
         public event PropertyChangedEventHandler PropertyChanged; 
-        private City selectedCity;
+        private City _selectedCity;
 
         //Свойство для коллекции городов
         public IEnumerable<City> Cities { get; }
@@ -22,13 +22,18 @@ namespace Task1.ViewModel
         //свойство для поля selectedCity, которое хранит в себе выбранный в ComboBox-е город
         public City SelectedCity
         {
-            get { return selectedCity; }
+            get { return _selectedCity; }
             set
             {
-                selectedCity = value;
+                _selectedCity = value;
                 OnPropertyChanged("selectedCity");
             }
         }
+
+
+
+        
+
 
         //конструктор модели представления, создаёт объекты для коллекции городов и задаёт команду
         public ViewModels()
@@ -40,7 +45,12 @@ namespace Task1.ViewModel
                 new City {CityName = "Осака" },
                 new City {CityName = "Квебек" }
             };
-            GetInfoWeather = new RelayCommand(() => { selectedCity.GetUrl(); });
+            GetInfoWeather = new RelayCommand(() => { SelectedCity.GetUrl(); }, Pder);
+        }
+
+        private bool Pder(object obj)
+        {
+            return SelectedCity != null;
         }
 
         //команда на запуск формирования get-запроса
