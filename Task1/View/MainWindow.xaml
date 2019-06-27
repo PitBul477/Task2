@@ -32,9 +32,7 @@
 				SelectedItem="{Binding Path=SelectedCity}">
 				<ComboBox.ItemTemplate>
 					<DataTemplate>
-						<StackPanel>
-							<TextBlock Text="{Binding Path=CityName}" />
-						</StackPanel>
+						<TextBlock Text="{Binding Path=CityName}" />
 					</DataTemplate>
 				</ComboBox.ItemTemplate>
 			</ComboBox>

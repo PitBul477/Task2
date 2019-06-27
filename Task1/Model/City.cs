@@ -13,45 +13,42 @@ namespace Task1.Model
     //Класс модели City
     public class City : INotifyPropertyChanged
     {
-        const string SiteUrl = "http://weather.service.msn.com/data.aspx?weasearchstr=";
-        const string ParamUrl = "&culture=en-US&weadegreetype=C&src=outlook";
-        private string cityName = string.Empty;
-        private string cityUrl = string.Empty;
-
-        //Свойство для поля cityName
-        public string CityName
-        {
-            get { return cityName; }
-            set
-            {
-                cityName = value;
-                OnPropertChanged(string.Empty);
-            }
-        }
-
-        //Свойство для поля cityUrl
-        public string CityUrl
-        {
-            get { return cityUrl; }
-            set
-            {
-                cityUrl = value;
-                OnPropertChanged(string.Empty);
-            }
-        }
+        private const string SiteUrl = "http://weather.service.msn.com/data.aspx?weasearchstr=";
+        private const string ParamUrl = "&culture=en-US&weadegreetype=C&src=outlook";
+        private string _cityName = string.Empty;
+        private string _cityUrl = string.Empty;
 
         //событие изменения свойства
         public event PropertyChangedEventHandler PropertyChanged;
-        void OnPropertChanged(string propertyName)
+
+        //Свойство для поля "Имя города"
+        public string CityName
         {
-            if (PropertyChanged != null)
-            { PropertyChanged(this, new PropertyChangedEventArgs(propertyName)); }
+            get { return _cityName; }
+            set
+            {
+                _cityName = value;
+                OnPropertChanged(string.Empty);
+            }
+        }
+
+        //Свойство для поля "Запрос по городу"
+        public string CityUrl
+        {
+            get { return _cityUrl; }
+            set
+            {
+                _cityUrl = value;
+                OnPropertChanged(string.Empty);
+            }
         }
 
         //Функция вычисления cityUrl из других полей и с помощью get-запроса
         public void GetUrl()
         {
-            var url = ($"{SiteUrl}{CityName}{ParamUrl}");
+            if (CityName == null)
+                throw new ArgumentException(String.Format("{0} не может принимать значение null", CityName), "CityName");
+            var url = $"{SiteUrl}{CityName}{ParamUrl}";
             var request = WebRequest.Create(url);
             var response = request.GetResponse();
             using (var stream = response.GetResponseStream())
@@ -62,6 +59,12 @@ namespace Task1.Model
                 }
             }
             response.Close();
+        }
+
+        void OnPropertChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+            { PropertyChanged(this, new PropertyChangedEventArgs(propertyName)); }
         }
     }
 }
