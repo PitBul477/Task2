@@ -68,5 +68,14 @@ namespace Task1.Properties {
                 return ResourceManager.GetString("Get", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Прогноз погоды.
+        /// </summary>
+        public static string TitleWindow {
+            get {
+                return ResourceManager.GetString("TitleWindow", resourceCulture);
+            }
+        }
     }
 }

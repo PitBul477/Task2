@@ -120,4 +120,7 @@
   <data name="Get" xml:space="preserve">
     <value>Получить</value>
   </data>
+  <data name="TitleWindow" xml:space="preserve">
+    <value>Прогноз погоды</value>
+  </data>
 </root>
