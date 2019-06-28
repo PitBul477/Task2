@@ -45,10 +45,7 @@ namespace Task1.Model
         //конструктор класса "Город"
         public City(string name)
         {
-            if (name == null)
-                throw new ArgumentException();
-            else
-                _cityName = name;
+            _cityName = name ?? throw new ArgumentException();
         }
 
         //функция вычисления cityUrl из других полей и с помощью get-запроса
