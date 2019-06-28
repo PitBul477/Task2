@@ -21,17 +21,17 @@ namespace Task1.Model
         //событие изменения свойства
         public event PropertyChangedEventHandler PropertyChanged;
 
-        //возвращает и устанавливает значение для поля "Имя города"
+        //возвращает или устанавливает значение для поля "Имя города"
         public string CityName
         {
-            private get { return _cityName; }
-            set
+            get { return _cityName; }
+            private set
             {
                 _cityName = value;
             }
         }
 
-        //возвращает и устанавливает значение для поля "Запрос по городу"
+        //возвращает или устанавливает значение для поля "Запрос по городу"
         public string CityUrl
         {
             get { return _cityUrl; }
@@ -48,7 +48,7 @@ namespace Task1.Model
             if (name == null)
                 throw new ArgumentException();
             else
-                CityName = name;
+                _cityName = name;
         }
 
         //функция вычисления cityUrl из других полей и с помощью get-запроса
