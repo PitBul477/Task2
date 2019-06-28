@@ -19,7 +19,7 @@ namespace Task1.ViewModel
         //возвращает значение коллекции городов
         public IEnumerable<City> Cities { get; }
 
-        //возвращает и устанавливает значение для поля selectedCity, которое хранит в себе выбранный в ComboBox-е город
+        //возвращает или устанавливает значение для поля selectedCity, которое хранит в себе выбранный в ComboBox-е город
         public City SelectedCity
         {
             get { return _selectedCity; }

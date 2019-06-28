@@ -11,8 +11,8 @@ namespace Task1.ViewModel
     //класс RelayCommand, реализующий интерфейс ICommand
     public class RelayCommand : ICommand
     {
-        private Action _execute;
-        private Predicate<object> _canExecute;
+        private readonly Action _execute;
+        private readonly Predicate<object> _canExecute;
 
         //событие, вызывающееся при изменении условий выполняемости команды
         public event EventHandler CanExecuteChanged
@@ -32,9 +32,7 @@ namespace Task1.ViewModel
         //метод, определяющий, может ли команда выполняться
         public bool CanExecute(object parameter)
         {
-            if (_canExecute != null)
-                return _canExecute(parameter);
-            return true;
+            return _canExecute == null || _canExecute(parameter);
         }
 
         //метод, выполняющий команду
