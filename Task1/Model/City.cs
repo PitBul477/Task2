@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace Task1.Model
 {
-    //Класс модели City
+    //класс модели City
     public class City : INotifyPropertyChanged
     {
         private const string SiteUrl = "http://weather.service.msn.com/data.aspx?weasearchstr=";
@@ -21,18 +21,17 @@ namespace Task1.Model
         //событие изменения свойства
         public event PropertyChangedEventHandler PropertyChanged;
 
-        //Свойство для поля "Имя города"
+        //возвращает и устанавливает значение для поля "Имя города"
         public string CityName
         {
-            get { return _cityName; }
+            private get { return _cityName; }
             set
             {
                 _cityName = value;
-                OnPropertChanged(string.Empty);
             }
         }
 
-        //Свойство для поля "Запрос по городу"
+        //возвращает и устанавливает значение для поля "Запрос по городу"
         public string CityUrl
         {
             get { return _cityUrl; }
@@ -43,11 +42,18 @@ namespace Task1.Model
             }
         }
 
-        //Функция вычисления cityUrl из других полей и с помощью get-запроса
+        //конструктор класса "Город"
+        public City(string name)
+        {
+            if (name == null)
+                throw new ArgumentException();
+            else
+                CityName = name;
+        }
+
+        //функция вычисления cityUrl из других полей и с помощью get-запроса
         public void GetUrl()
         {
-            if (CityName == null)
-                throw new ArgumentException(String.Format("{0} не может принимать значение null", CityName), "CityName");
             var url = $"{SiteUrl}{CityName}{ParamUrl}";
             var request = WebRequest.Create(url);
             var response = request.GetResponse();

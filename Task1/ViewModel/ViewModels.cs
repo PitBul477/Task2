@@ -9,17 +9,17 @@ using Task1.Model;
 
 namespace Task1.ViewModel
 {
-    //Класс модели представления (ViewModel) для связи с Model и View
+    //класс модели представления (ViewModel) для связи с Model и View
     public class ViewModels : INotifyPropertyChanged
     {
-        //событие изменения свойства
-        public event PropertyChangedEventHandler PropertyChanged; 
         private City _selectedCity;
+        //событие изменения свойства
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        //Свойство для коллекции городов
+        //возвращает значение коллекции городов
         public IEnumerable<City> Cities { get; }
 
-        //свойство для поля selectedCity, которое хранит в себе выбранный в ComboBox-е город
+        //возвращает и устанавливает значение для поля selectedCity, которое хранит в себе выбранный в ComboBox-е город
         public City SelectedCity
         {
             get { return _selectedCity; }
@@ -29,33 +29,28 @@ namespace Task1.ViewModel
                 OnPropertyChanged("selectedCity");
             }
         }
-
-
-
         
-
+        //возвращает значение команды на запуск формирования get-запроса
+        public RelayCommand GetInfoWeather { get; }
 
         //конструктор модели представления, создаёт объекты для коллекции городов и задаёт команду
         public ViewModels()
         {
             Cities = new List<City> {
-                new City {CityName = "Москва" },
-                new City {CityName = "Череповец" },
-                new City {CityName = "Токио" },
-                new City {CityName = "Осака" },
-                new City {CityName = "Квебек" }
+                new City("Москва"),
+                new City("Череповец"),
+                new City("Токио"),
+                new City("Осака"),
+                new City("Квебек")
             };
-            GetInfoWeather = new RelayCommand(() => { SelectedCity.GetUrl(); }, Pder);
+            GetInfoWeather = new RelayCommand(() => { SelectedCity.GetUrl(); }, CheckSelectedCity);
         }
 
-        private bool Pder(object obj)
+        private bool CheckSelectedCity(object obj)
         {
             return SelectedCity != null;
         }
-
-        //команда на запуск формирования get-запроса
-        public RelayCommand GetInfoWeather { get; }
-
+        
         //функция для обработки изменений, в качестве аргументра принимает название метода, вызвавшего изменение, ничего не возвращает
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
