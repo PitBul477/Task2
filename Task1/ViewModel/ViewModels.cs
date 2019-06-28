@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Configuration;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
@@ -12,15 +13,17 @@ namespace Task1.ViewModel
     //класс модели представления (ViewModel) для связи с Model и View
     public class ViewModels : INotifyPropertyChanged
     {
-        private City _selectedCity;
+        private CityModel _selectedCity;
         //событие изменения свойства
         public event PropertyChangedEventHandler PropertyChanged;
 
+        System.Configuration.Configuration currentConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
         //возвращает значение коллекции городов
-        public IEnumerable<City> Cities { get; }
+        public IEnumerable<CityModel> Cities { get; }
 
         //возвращает или устанавливает значение для поля selectedCity, которое хранит в себе выбранный в ComboBox-е город
-        public City SelectedCity
+        public CityModel SelectedCity
         {
             get { return _selectedCity; }
             set
@@ -32,18 +35,31 @@ namespace Task1.ViewModel
         
         //возвращает значение команды на запуск формирования get-запроса
         public RelayCommand GetInfoWeather { get; }
+        //слушит для обработки сохранения конфигурации
+        public RelayCommand WindowClosing { get; private set; }
+        //
+        public bool SetCheck
+        {
+            get { return Settings.SwitchSave; }
+            set
+            {
+                Settings.SwitchSave = value;
+                OnPropertyChanged("selectedCity");
+            }
+        }
 
         //конструктор модели представления, создаёт объекты для коллекции городов и задаёт команду
         public ViewModels()
-        {
-            Cities = new List<City> {
-                new City("Москва"),
-                new City("Череповец"),
-                new City("Токио"),
-                new City("Осака"),
-                new City("Квебек")
+        {            
+            Cities = new List<CityModel> {
+                new CityModel("Москва"),
+                new CityModel("Череповец"),
+                new CityModel("Токио"),
+                new CityModel("Осака"),
+                new CityModel("Квебек")
             };
             GetInfoWeather = new RelayCommand(() => { SelectedCity.GetUrl(); }, CheckSelectedCity);
+            this.WindowClosing = new RelayCommand(()=>SaveConf());
         }
 
         private bool CheckSelectedCity(object obj)
@@ -51,6 +67,13 @@ namespace Task1.ViewModel
             return SelectedCity != null;
         }
         
+        private void SaveConf()
+        {
+            currentConfig.AppSettings.Settings["switchsave"].Value = Settings.SwitchSave.ToString();
+            currentConfig.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings");
+        }
+
         //функция для обработки изменений, в качестве аргументра принимает название метода, вызвавшего изменение, ничего не возвращает
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {

@@ -117,10 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DataCity" xml:space="preserve">
+    <value>Сохранять данные по городам?</value>
+  </data>
+  <data name="ForecastW" xml:space="preserve">
+    <value>Прогноз погоды</value>
+  </data>
   <data name="Get" xml:space="preserve">
     <value>Получить</value>
   </data>
   <data name="TitleWindow" xml:space="preserve">
     <value>Прогноз погоды</value>
+  </data>
+  <data name="TodayW" xml:space="preserve">
+    <value>Погода на сегодня</value>
   </data>
 </root>
