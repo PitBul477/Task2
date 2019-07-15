@@ -61,11 +61,47 @@ namespace Task1.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Сохранять данные по городам?.
+        /// </summary>
+        public static string DataCity {
+            get {
+                return ResourceManager.GetString("DataCity", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Прогноз погоды.
+        /// </summary>
+        public static string ForecastW {
+            get {
+                return ResourceManager.GetString("ForecastW", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Получить.
         /// </summary>
         public static string Get {
             get {
                 return ResourceManager.GetString("Get", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Прогноз погоды.
+        /// </summary>
+        public static string TitleWindow {
+            get {
+                return ResourceManager.GetString("TitleWindow", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Погода на сегодня.
+        /// </summary>
+        public static string TodayW {
+            get {
+                return ResourceManager.GetString("TodayW", resourceCulture);
             }
         }
     }
