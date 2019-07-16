@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace Task1.ViewModel
+namespace Task1
 {
-    //класс RelayCommand, реализующий интерфейс ICommand
-    public class RelayCommand : ICommand    //класс чего? дай название
+    //класс "Трансляция комманды", реализующий интерфейс ICommand
+    public class RelayCommand : ICommand
     {
         private readonly Action _execute;
         private readonly Predicate<object> _canExecute;
@@ -16,7 +16,7 @@ namespace Task1.ViewModel
             remove => CommandManager.RequerySuggested -= value;
         }
 
-        //создаёт объекты класса RelayCommand
+        //создает объекты класса "Трансляция комманды"
         public RelayCommand(Action execute, Predicate<object> canExecute = null)
         {
             _execute = execute ?? throw new ArgumentException();

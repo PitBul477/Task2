@@ -22,7 +22,7 @@ namespace Task1.Model
                 OnPropertChanged(nameof(weather));
             }
         }
-        void OnPropertChanged(string propertyName)
+        private void OnPropertChanged(string propertyName)
         {
             if (PropertyChanged != null)
             { PropertyChanged(this, new PropertyChangedEventArgs(propertyName)); }
@@ -207,7 +207,7 @@ namespace Task1.Model
             }
         }
 
-        void OnPropertChanged(string propertyName)
+        private void OnPropertChanged(string propertyName)
         {
             if (PropertyChanged != null)
             { PropertyChanged(this, new PropertyChangedEventArgs(propertyName)); }
@@ -336,7 +336,7 @@ namespace Task1.Model
                 OnPropertChanged(string.Empty);
             }
         }
-        void OnPropertChanged(string propertyName)
+        private void OnPropertChanged(string propertyName)
         {
             if (PropertyChanged != null)
             { PropertyChanged(this, new PropertyChangedEventArgs(propertyName)); }
@@ -433,7 +433,7 @@ namespace Task1.Model
                 OnPropertChanged(string.Empty);
             }
         }
-        void OnPropertChanged(string propertyName)
+        private void OnPropertChanged(string propertyName)
         {
             if (PropertyChanged != null)
             { PropertyChanged(this, new PropertyChangedEventArgs(propertyName)); }
@@ -462,7 +462,7 @@ namespace Task1.Model
                 OnPropertChanged(string.Empty);
             }
         }
-        void OnPropertChanged(string propertyName)
+        private void OnPropertChanged(string propertyName)
         {
             if (PropertyChanged != null)
             { PropertyChanged(this, new PropertyChangedEventArgs(propertyName)); }

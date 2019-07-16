@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.Configuration;
 using System.Runtime.CompilerServices;
 using Task1.Model;
 
@@ -30,17 +29,6 @@ namespace Task1.ViewModel
         //возвращает значение команды на запуск формирования get-запроса
         public RelayCommand GetInfoWeather { get; }
 
-        //возвращает или устанавливает значение для значения типа сохранения данных в конфигурации
-        public bool SetCheck
-        {
-            get { return Settings.SaveData; }
-            set
-            {
-                Settings.SaveData = value;
-                OnPropertyChanged("selectedCity");
-            }
-        }
-
         //конструктор модели представления, создаёт объекты для коллекции городов и задаёт команду
         public ViewModel()
         {            
@@ -51,7 +39,7 @@ namespace Task1.ViewModel
                 new CityModel("Осака"),
                 new CityModel("Квебек")
             };
-            GetInfoWeather = new RelayCommand(() => SelectedCity.GetUrl(), CheckSelectedCity);
+            GetInfoWeather = new RelayCommand(() => SelectedCity.UnloadingWeatherData(), CheckSelectedCity);
         }
 
         private bool CheckSelectedCity(object obj)
@@ -59,9 +47,9 @@ namespace Task1.ViewModel
             return SelectedCity != null;
         }
 
-        private void OnPropertyChanged([CallerMemberName]string property = "")
+        private void OnPropertyChanged(string property)
         {
-                PropertyChanged(this, new PropertyChangedEventArgs(property));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
         }
     }
 }

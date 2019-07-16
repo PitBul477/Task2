@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Net;
-using System.Windows;
 using System.Xml.Serialization;
 
 namespace Task1.Model
@@ -13,31 +12,31 @@ namespace Task1.Model
     {
         private const string SiteUrl = "http://weather.service.msn.com/data.aspx?weasearchstr=";
         private const string ParamUrl = "&culture=en-US&weadegreetype=C&src=outlook";
-        private static Dictionary<string, string> _staticDictionaryCity;
-        private Dictionary<string, string> _dictionaryCity;
+        private static Dictionary<string, string> _staticDictionaryWeatherData;
+        private Dictionary<string, string> _dictionaryWeatherData;
 
         //событие изменения свойства
         public event PropertyChangedEventHandler PropertyChanged;
 
         //возвращает или устанавливает значение для поля "Имя города"
-        public string CityName { get; private set; }
+        public string CityName { get; }
 
-        //возвращает или устанавливает значение для поля "Статический словарь города" или "Словарь города" в зависимости от настройки конфигурации
+        //возвращает или устанавливает значение для поля "Статический словарь данных погоды" или "Словарь данных погоды" в зависимости от настройки конфигурации
         public Dictionary<string, string> DictionaryUnloading
         {
             get
             {
                 if (Settings.SaveData)
-                    return _dictionaryCity;
+                    return _dictionaryWeatherData;
                 else
-                    return _staticDictionaryCity;
+                    return _staticDictionaryWeatherData;
             }
             set
             {
                 if (Settings.SaveData)
-                    _dictionaryCity = value;
+                    _dictionaryWeatherData = value;
                 else
-                    _staticDictionaryCity = value;
+                    _staticDictionaryWeatherData = value;
                 OnPropertChanged(nameof(DictionaryUnloading));
             }
         }
@@ -46,23 +45,22 @@ namespace Task1.Model
         public CityModel(string name)
         {
             CityName = name ?? throw new ArgumentException();
-            _dictionaryCity = new Dictionary<string, string>();
-            _staticDictionaryCity = new Dictionary<string, string>();
+            _dictionaryWeatherData = new Dictionary<string, string>();
+            _staticDictionaryWeatherData = new Dictionary<string, string>();
         }
 
         //функция получения ответа get-запроса и формировании на его основе полей "Словарей выгрузки" 
-        public void GetUrl()
+        public void UnloadingWeatherData()
         {
             var url = $"{SiteUrl}{CityName}{ParamUrl}";
             var request = WebRequest.Create(url).GetResponse();
             var temp = new Dictionary<string, string>();
-            var chat = string.Empty; //нет смысла
             var formatter = new XmlSerializer(typeof(WeatherdataClass));
             using (var reader = new StreamReader(request.GetResponseStream()))
                 if (reader != null)
                 {
                     var weatherdata = (WeatherdataClass)formatter.Deserialize(reader);
-                    temp.Add("Имя места назначения", weatherdata.weather.weatherlocationname); //TODO сделай через цикл.
+                    temp.Add("Имя места назначения", weatherdata.weather.weatherlocationname);
                     temp.Add("Широта", weatherdata.weather.lat);
                     temp.Add("Долгота", weatherdata.weather.longitude);
                     temp.Add("Дата", weatherdata.weather.current.date);
@@ -84,9 +82,9 @@ namespace Task1.Model
             request.Close();
         }
 
-        void OnPropertChanged(string propertyName)
+        private void OnPropertChanged(string propertyName)
         {
-            PropertyChanged(this, new PropertyChangedEventArgs(propertyName)); //форматирование
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

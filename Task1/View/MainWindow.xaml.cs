@@ -11,7 +11,7 @@ namespace Task1.View
     /// </summary>
     public partial class MainWindow : Window
     {
-        //создаёт главного окна
+        //создаёт главное окно
         public MainWindow()
         {
             InitializeComponent();
