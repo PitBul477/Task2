@@ -70,15 +70,6 @@ namespace Task1.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Прогноз погоды.
-        /// </summary>
-        public static string ForecastW {
-            get {
-                return ResourceManager.GetString("ForecastW", resourceCulture);
-            }
-        }
-
-        /// <summary>
         ///   Looks up a localized string similar to Получить.
         /// </summary>
         public static string Get {
@@ -99,9 +90,9 @@ namespace Task1.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Погода на сегодня.
         /// </summary>
-        public static string TodayW {
+        public static string TodayWeather {
             get {
-                return ResourceManager.GetString("TodayW", resourceCulture);
+                return ResourceManager.GetString("TodayWeather", resourceCulture);
             }
         }
     }

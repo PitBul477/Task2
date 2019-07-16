@@ -11,29 +11,21 @@
 	xmlns:vm="clr-namespace:Task1.ViewModel"
 	Title="{x:Static properties:Resources.TitleWindow}"
 	Width="793.697"
-	Height="500"
+	Height="485"
 	mc:Ignorable="d">
-	<i:Interaction.Triggers>
-		<i:EventTrigger EventName="Closing">
-			<i:InvokeCommandAction Command="{Binding WindowClosing}" CommandParameter="{Binding}" />
-		</i:EventTrigger>
-	</i:Interaction.Triggers>
 	<Window.DataContext>
-		<vm:ViewModels />
+		<vm:ViewModel />
 	</Window.DataContext>
 	<Grid>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="10*" />
-			<RowDefinition Height="7*" />
-			<RowDefinition Height="56.5*" />
-			<RowDefinition Height="5*" />
-			<RowDefinition Height="22.5*" />
+			<RowDefinition Height="0.10*" />
+			<RowDefinition Height="0.07*" />
+			<RowDefinition Height="0.83*" />
 		</Grid.RowDefinitions>
 		<Grid>
 			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="0.6*" />
 				<ColumnDefinition Width="0.4*" />
-				<ColumnDefinition Width="0.30*" />
-				<ColumnDefinition Width="0.3*" />
 			</Grid.ColumnDefinitions>
 			<ComboBox
 				Grid.Row="0"
@@ -48,41 +40,24 @@
 				</ComboBox.ItemTemplate>
 			</ComboBox>
 			<Button
-				x:Name="buttonGetInfoWeather"
 				Grid.Row="0"
 				Grid.Column="1"
 				Width="165"
 				Margin="11"
 				Command="{Binding GetInfoWeather}"
 				Content="{x:Static properties:Resources.Get}" />
-			<CheckBox
-				x:Name="SaveSwitcher"
-				Grid.Row="0"
-				Grid.Column="2"
-				Margin="10,15"
-				Content="{x:Static properties:Resources.DataCity}"
-				IsChecked="{Binding SetCheck, Mode=TwoWay}" />
 		</Grid>
 		<TextBlock
 			Grid.Row="1"
 			Grid.Column="0"
 			Margin="20,10,20,0"
-			Text="{x:Static properties:Resources.TodayW}" />
+			Text="{x:Static properties:Resources.TodayWeather}" />
 		<ListView
 			x:Name="WeatherInfoOutput1"
 			Grid.Row="2"
 			Grid.Column="0"
-			Margin="20,0,20,10">
-			<ListView.Style>
-				<Style TargetType="{x:Type ListView}">
-					<Setter Property="ItemsSource" Value="{Binding SelectedCity.DictionaryCity}" />
-					<Style.Triggers>
-						<DataTrigger Binding="{Binding ElementName=SaveSwitcher, Path=IsChecked}" Value="False">
-							<Setter Property="ItemsSource" Value="{Binding SelectedCity.StaticDictionaryCity}" />
-						</DataTrigger>
-					</Style.Triggers>
-				</Style>
-			</ListView.Style>
+			Margin="20,0,20,20"
+			ItemsSource="{Binding SelectedCity.DictionaryUnloading}">
 			<ListView.ItemTemplate>
 				<DataTemplate>
 					<StackPanel Orientation="Horizontal">
@@ -93,29 +68,5 @@
 				</DataTemplate>
 			</ListView.ItemTemplate>
 		</ListView>
-		<TextBlock
-			Grid.Row="3"
-			Grid.Column="0"
-			Margin="20,0"
-			Text="{x:Static properties:Resources.ForecastW}" />
-		<TextBox
-			x:Name="WeatherInfoOutput"
-			Grid.Row="4"
-			Grid.Column="0"
-			Margin="20,0,20,20"
-			IsReadOnly="True"
-			TextWrapping="Wrap"
-			VerticalScrollBarVisibility="Auto">
-			<TextBox.Style>
-				<Style TargetType="{x:Type TextBox}">
-					<Setter Property="Text" Value="{Binding SelectedCity.CityUrl}" />
-					<Style.Triggers>
-						<DataTrigger Binding="{Binding ElementName=SaveSwitcher, Path=IsChecked}" Value="False">
-							<Setter Property="Text" Value="{Binding SelectedCity.StaticCityUrl}" />
-						</DataTrigger>
-					</Style.Triggers>
-				</Style>
-			</TextBox.Style>
-		</TextBox>
 	</Grid>
 </Window>

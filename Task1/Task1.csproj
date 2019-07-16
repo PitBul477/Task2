@@ -69,9 +69,9 @@
     </Compile>
     <Compile Include="Model\CityModel.cs" />
     <Compile Include="Model\SerialCIty.cs" />
-    <Compile Include="Model\Settings.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
-    <Compile Include="ViewModel\ViewModels.cs" />
+    <Compile Include="ViewModel\ViewModel.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
