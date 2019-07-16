@@ -11,11 +11,10 @@ namespace Task1.View
     /// </summary>
     public partial class MainWindow : Window
     {
-        //Создание главного окна
+        //создаёт главное окно
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new ViewModels();
         }
     }
 }
