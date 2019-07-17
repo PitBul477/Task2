@@ -3,7 +3,7 @@
 namespace Task1.View
 {
     /// <summary>
-    /// Integration logic for MainWindow.xaml
+    /// Interaсtion logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
