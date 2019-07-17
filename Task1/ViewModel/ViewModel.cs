@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using Task1.Model;
 
 namespace Task1.ViewModel
@@ -25,13 +24,13 @@ namespace Task1.ViewModel
                 OnPropertyChanged(nameof(SelectedCity));
             }
         }
-        
+
         //возвращает значение команды на запуск формирования get-запроса
         public RelayCommand GetInfoWeather { get; }
 
         //конструктор модели представления, создаёт объекты для коллекции городов и задаёт команду
         public ViewModel()
-        {            
+        {
             Cities = new List<CityModel> {
                 new CityModel("Москва"),
                 new CityModel("Череповец"),

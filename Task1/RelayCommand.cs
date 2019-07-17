@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace Task1
 {
-    //класс "Трансляция комманды", реализующий интерфейс ICommand
+    //класс "Трансляция комманды"
     public class RelayCommand : ICommand
     {
         private readonly Action _execute;
