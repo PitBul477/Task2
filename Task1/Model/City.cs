@@ -21,17 +21,17 @@ namespace Task1.Model
         //событие изменения свойства
         public event PropertyChangedEventHandler PropertyChanged;
 
-        //возвращает или устанавливает значение для поля "Имя города"
+        //возвращает и устанавливает значение для поля "Имя города"
         public string CityName
         {
-            get { return _cityName; }
-            private set
+            private get { return _cityName; }
+            set
             {
                 _cityName = value;
             }
         }
 
-        //возвращает или устанавливает значение для поля "Запрос по городу"
+        //возвращает и устанавливает значение для поля "Запрос по городу"
         public string CityUrl
         {
             get { return _cityUrl; }
