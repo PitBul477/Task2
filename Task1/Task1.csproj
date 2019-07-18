@@ -102,27 +102,26 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\City\City\City.csproj">
+    <ProjectReference Include="..\dll\City\City\City.csproj">
       <Project>{ff9b9bb7-2125-462c-863a-513501e088a6}</Project>
       <Name>City</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\MyCommand\MyCommand\MyCommand.csproj">
+    <ProjectReference Include="..\dll\MyCommand\MyCommand\MyCommand.csproj">
       <Project>{0934f075-8fb4-4d87-a7c0-002915f863ea}</Project>
       <Name>MyCommand</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\MyVM\MyVM\MyVM.csproj">
+    <ProjectReference Include="..\dll\MyVM\MyVM\MyVM.csproj">
       <Project>{02f5c196-0515-434a-af31-1dcc30346f89}</Project>
       <Name>MyVM</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\SerialCityModel\SerialCityModel\SerialCity.csproj">
+    <ProjectReference Include="..\dll\SerialCityModel\SerialCityModel\SerialCity.csproj">
       <Project>{9d19655d-a27d-445f-8a47-708591631e38}</Project>
       <Name>SerialCity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Settings\Settings\Settings.csproj">
+    <ProjectReference Include="..\dll\Settings\Settings\Settings.csproj">
       <Project>{00167e2a-2bc0-4e93-bd96-cc45323fdbaf}</Project>
       <Name>Settings</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
