@@ -102,6 +102,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\dll\AppSettings\AppSettings\AppSettings.csproj">
+      <Project>{9b999917-c7c0-41cc-8745-41915761fbe6}</Project>
+      <Name>AppSettings</Name>
+    </ProjectReference>
     <ProjectReference Include="..\dll\City\City\City.csproj">
       <Project>{ff9b9bb7-2125-462c-863a-513501e088a6}</Project>
       <Name>City</Name>
@@ -117,10 +121,6 @@
     <ProjectReference Include="..\dll\SerialCityModel\SerialCityModel\SerialCity.csproj">
       <Project>{9d19655d-a27d-445f-8a47-708591631e38}</Project>
       <Name>SerialCity</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\dll\Settings\Settings\Settings.csproj">
-      <Project>{00167e2a-2bc0-4e93-bd96-cc45323fdbaf}</Project>
-      <Name>Settings</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

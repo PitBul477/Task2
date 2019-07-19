@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Net;
 using System.Xml.Serialization;
-using MySettings;
+using AppSettings;
 using SerialCity;
 
 namespace City

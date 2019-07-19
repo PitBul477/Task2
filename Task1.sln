@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyVM", "dll\MyVM\MyVM\MyVM.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerialCity", "dll\SerialCityModel\SerialCityModel\SerialCity.csproj", "{9D19655D-A27D-445F-8A47-708591631E38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Settings", "dll\Settings\Settings\Settings.csproj", "{00167E2A-2BC0-4E93-BD96-CC45323FDBAF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppSettings", "dll\AppSettings\AppSettings\AppSettings.csproj", "{9B999917-C7C0-41CC-8745-41915761FBE6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +41,10 @@ Global
 		{9D19655D-A27D-445F-8A47-708591631E38}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D19655D-A27D-445F-8A47-708591631E38}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D19655D-A27D-445F-8A47-708591631E38}.Release|Any CPU.Build.0 = Release|Any CPU
-		{00167E2A-2BC0-4E93-BD96-CC45323FDBAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{00167E2A-2BC0-4E93-BD96-CC45323FDBAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{00167E2A-2BC0-4E93-BD96-CC45323FDBAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{00167E2A-2BC0-4E93-BD96-CC45323FDBAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B999917-C7C0-41CC-8745-41915761FBE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B999917-C7C0-41CC-8745-41915761FBE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B999917-C7C0-41CC-8745-41915761FBE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B999917-C7C0-41CC-8745-41915761FBE6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
