@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
-using Task1.Model;
+using City;
+using MyCommand;
 
-namespace Task1.ViewModel
+namespace MyVM
 {
     //класс модели представления (ViewModel) для связи с Model и View
     public class ViewModel : INotifyPropertyChanged

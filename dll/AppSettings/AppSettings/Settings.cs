@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace Task1
+namespace AppSettings
 {
     //класс "Настройки конфигурации"
     public static class Settings

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Xml.Serialization;
 
-namespace Task1.Model
+namespace SerialCity
 {
     [Serializable]
     [XmlRoot(ElementName = ("weatherdata"))]
@@ -14,8 +14,9 @@ namespace Task1.Model
         public event PropertyChangedEventHandler PropertyChanged;
 
         [XmlElement(ElementName = "weather")]
-        public Weather weather {
-            get { return _weather; }
+        public Weather weather
+        {
+            get => _weather;
             set
             {
                 _weather = value;
@@ -24,8 +25,7 @@ namespace Task1.Model
         }
         private void OnPropertChanged(string propertyName)
         {
-            if (PropertyChanged != null)
-            { PropertyChanged(this, new PropertyChangedEventArgs(propertyName)); }
+            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
     }
     public class Weather
@@ -51,134 +51,149 @@ namespace Task1.Model
         public event PropertyChangedEventHandler PropertyChanged;
 
         [XmlAttribute(AttributeName = "weatherlocationcode")]
-        public string weatherlocationcode {
-            get { return _weatherlocationcode; }
+        public string weatherlocationcode
+        {
+            get => _weatherlocationcode;
             set
             {
                 _weatherlocationcode = value;
-                OnPropertChanged(string.Empty);
+                OnPropertChanged(nameof(weatherlocationcode));
             }
         }
         [XmlAttribute(AttributeName = "weatherlocationname")]
-        public string weatherlocationname {
-            get { return _weatherlocationname; }
+        public string weatherlocationname
+        {
+            get => _weatherlocationname;
             set
             {
                 _weatherlocationname = value;
-                OnPropertChanged(string.Empty);
+                OnPropertChanged(nameof(weatherlocationname));
             }
         }
         [XmlAttribute(AttributeName = "url")]
-        public string url {
-            get { return _url; }
+        public string url
+        {
+            get => _url;
             set
             {
                 _url = value;
-                OnPropertChanged(string.Empty);
+                OnPropertChanged(nameof(url));
             }
         }
         [XmlAttribute(AttributeName = "imagerelativeurl")]
-        public string imagerelativeurl {
-            get { return _imagerelativeurl; }
+        public string imagerelativeurl
+        {
+            get => _imagerelativeurl;
             set
             {
                 _imagerelativeurl = value;
-                OnPropertChanged(string.Empty);
+                OnPropertChanged(nameof(imagerelativeurl));
             }
         }
         [XmlAttribute(AttributeName = "degreetype")]
-        public string degreetype {
-            get { return _degreetype; }
+        public string degreetype
+        {
+            get => _degreetype;
             set
             {
                 _degreetype = value;
-                OnPropertChanged(string.Empty);
+                OnPropertChanged(nameof(degreetype));
             }
         }
         [XmlAttribute(AttributeName = "provider")]
-        public string provider {
-            get { return _provider; }
+        public string provider
+        {
+            get => _provider;
             set
             {
                 _provider = value;
-                OnPropertChanged(string.Empty);
+                OnPropertChanged(nameof(provider));
             }
         }
         [XmlAttribute(AttributeName = "attribution")]
-        public string attribution {
-            get { return _attribution; }
+        public string attribution
+        {
+            get => _attribution;
             set
             {
                 _attribution = value;
-                OnPropertChanged(string.Empty);
+                OnPropertChanged(nameof(attribution));
             }
         }
         [XmlAttribute(AttributeName = "attribution2")]
-        public string attribution2 {
-            get { return _attribution2; }
+        public string attribution2
+        {
+            get => _attribution2;
             set
             {
                 _attribution2 = value;
-                OnPropertChanged(string.Empty);
+                OnPropertChanged(nameof(attribution2));
             }
         }
         [XmlAttribute(AttributeName = "lat")]
-        public string lat {
-            get { return _lat; }
+        public string lat
+        {
+            get => _lat;
             set
             {
                 _lat = value;
-                OnPropertChanged(string.Empty);
+                OnPropertChanged(nameof(lat));
             }
         }
         [XmlAttribute(AttributeName = "long")]
-        public string longitude {
-            get { return _longitude; }
+        public string longitude
+        {
+            get => _longitude;
             set
             {
                 _longitude = value;
-                OnPropertChanged(string.Empty);
+                OnPropertChanged(nameof(longitude));
             }
         }
         [XmlAttribute(AttributeName = "timezone")]
-        public string timezone {
-            get { return _timezone; }
+        public string timezone
+        {
+            get => _timezone;
             set
             {
                 _timezone = value;
-                OnPropertChanged(string.Empty);
+                OnPropertChanged(nameof(timezone));
             }
         }
         [XmlAttribute(AttributeName = "alert")]
-        public string alert {
-            get { return _alert; }
+        public string alert
+        {
+            get => _alert;
             set
             {
                 _alert = value;
-                OnPropertChanged(string.Empty);
+                OnPropertChanged(nameof(alert));
             }
         }
         [XmlAttribute(AttributeName = "entityid")]
-        public string entityid {
-            get { return _entityid; }
+        public string entityid
+        {
+            get => _entityid;
             set
             {
                 _entityid = value;
-                OnPropertChanged(string.Empty);
+                OnPropertChanged(nameof(entityid));
             }
         }
         [XmlAttribute(AttributeName = "encodedlocationname")]
-        public string encodedlocationname {
-            get { return _encodedlocationname; }
+        public string encodedlocationname
+        {
+            get => _encodedlocationname;
             set
             {
                 _encodedlocationname = value;
-                OnPropertChanged(string.Empty);
+                OnPropertChanged(nameof(encodedlocationname));
             }
         }
         [XmlElement(ElementName = "current")]
-        public Current current {
-            get { return _Current; }
+        public Current current
+        {
+            get => _Current;
             set
             {
                 _Current = value;
@@ -186,11 +201,9 @@ namespace Task1.Model
             }
         }
         [XmlElement(ElementName = "forecast")]
-        public List<Forecast> forecast {
-            get
-            {
-                return _forecast;
-            }
+        public List<Forecast> forecast
+        {
+            get => _forecast;
             set
             {
                 _forecast = value;
@@ -198,8 +211,9 @@ namespace Task1.Model
             }
         }
         [XmlElement(ElementName = "toolbar")]
-        public Toolbar toolbar {
-            get { return _Toolbar; }
+        public Toolbar toolbar
+        {
+            get => _Toolbar;
             set
             {
                 _Toolbar = value;
@@ -209,8 +223,7 @@ namespace Task1.Model
 
         private void OnPropertChanged(string propertyName)
         {
-            if (PropertyChanged != null)
-            { PropertyChanged(this, new PropertyChangedEventArgs(propertyName)); }
+            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
     }
     public class Current
@@ -229,117 +242,128 @@ namespace Task1.Model
         private string _windspeed = string.Empty;
         public event PropertyChangedEventHandler PropertyChanged;
         [XmlAttribute(AttributeName = "temperature")]
-        public string temperature {
-            get { return _temperature; }
+        public string temperature
+        {
+            get => _temperature;
             set
             {
                 _temperature = value;
-                OnPropertChanged(string.Empty);
+                OnPropertChanged(nameof(temperature));
             }
         }
         [XmlAttribute(AttributeName = "skycode")]
-        public string skycode {
-            get { return _skycode; }
+        public string skycode
+        {
+            get => _skycode;
             set
             {
                 _skycode = value;
-                OnPropertChanged(string.Empty);
+                OnPropertChanged(nameof(skycode));
             }
         }
         [XmlAttribute(AttributeName = "skytext")]
-        public string skytext {
-            get { return _skytext; }
+        public string skytext
+        {
+            get => _skytext;
             set
             {
                 _skytext = value;
-                OnPropertChanged(string.Empty);
+                OnPropertChanged(nameof(skytext));
             }
         }
         [XmlAttribute(AttributeName = "date")]
-        public string date {
-            get { return _date; }
+        public string date
+        {
+            get => _date;
             set
             {
                 _date = value;
-                OnPropertChanged(string.Empty);
+                OnPropertChanged(nameof(date));
             }
         }
         [XmlAttribute(AttributeName = "observationtime")]
-        public string observationtime {
-            get { return _observationtime; }
+        public string observationtime
+        {
+            get => _observationtime;
             set
             {
                 _observationtime = value;
-                OnPropertChanged(string.Empty);
+                OnPropertChanged(nameof(observationtime));
             }
         }
         [XmlAttribute(AttributeName = "observationpoint")]
-        public string observationpoint {
-            get { return _observationpoint; }
+        public string observationpoint
+        {
+            get => _observationpoint;
             set
             {
                 _observationpoint = value;
-                OnPropertChanged(string.Empty);
+                OnPropertChanged(nameof(observationpoint));
             }
         }
         [XmlAttribute(AttributeName = "feelslike")]
-        public string feelslike {
-            get { return _feelslike; }
+        public string feelslike
+        {
+            get => _feelslike;
             set
             {
                 _feelslike = value;
-                OnPropertChanged(string.Empty);
+                OnPropertChanged(nameof(feelslike));
             }
         }
         [XmlAttribute(AttributeName = "humidity")]
-        public string humidity {
-            get { return _humidity; }
+        public string humidity
+        {
+            get => _humidity;
             set
             {
                 _humidity = value;
-                OnPropertChanged(string.Empty);
+                OnPropertChanged(nameof(humidity));
             }
         }
         [XmlAttribute(AttributeName = "winddisplay")]
-        public string winddisplay {
-            get { return _winddisplay; }
+        public string winddisplay
+        {
+            get => _winddisplay;
             set
             {
                 _winddisplay = value;
-                OnPropertChanged(string.Empty);
+                OnPropertChanged(nameof(winddisplay));
             }
         }
         [XmlAttribute(AttributeName = "day")]
-        public string day {
-            get { return _day; }
+        public string day
+        {
+            get => _day;
             set
             {
                 _day = value;
-                OnPropertChanged(string.Empty);
+                OnPropertChanged(nameof(day));
             }
         }
         [XmlAttribute(AttributeName = "shortday")]
-        public string shortday {
-            get { return _shortday; }
+        public string shortday
+        {
+            get => _shortday;
             set
             {
                 _shortday = value;
-                OnPropertChanged(string.Empty);
+                OnPropertChanged(nameof(shortday));
             }
         }
         [XmlAttribute(AttributeName = "windspeed")]
-        public string windspeed {
-            get { return _windspeed; }
+        public string windspeed
+        {
+            get => _windspeed;
             set
             {
                 _windspeed = value;
-                OnPropertChanged(string.Empty);
+                OnPropertChanged(nameof(windspeed));
             }
         }
         private void OnPropertChanged(string propertyName)
         {
-            if (PropertyChanged != null)
-            { PropertyChanged(this, new PropertyChangedEventArgs(propertyName)); }
+            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
     }
     public class Forecast
@@ -356,87 +380,86 @@ namespace Task1.Model
         [XmlAttribute(AttributeName = "low")]
         public string low
         {
-            get { return _low; }
+            get => _low;
             set
             {
                 _low = value;
-                OnPropertChanged(string.Empty);
+                OnPropertChanged(nameof(low));
             }
         }
         [XmlAttribute(AttributeName = "high")]
         public string high
         {
-            get { return _high; }
+            get => _high;
             set
             {
                 _high = value;
-                OnPropertChanged(string.Empty);
+                OnPropertChanged(nameof(high));
             }
         }
         [XmlAttribute(AttributeName = "skycodeday")]
         public string skycodeday
         {
-            get { return _skycodeday; }
+            get => _skycodeday;
             set
             {
                 _skycodeday = value;
-                OnPropertChanged(string.Empty);
+                OnPropertChanged(nameof(skycodeday));
             }
         }
         [XmlAttribute(AttributeName = "skytextday")]
         public string skytextday
         {
-            get { return _skytextday; }
+            get => _skytextday;
             set
             {
                 _skytextday = value;
-                OnPropertChanged(string.Empty);
+                OnPropertChanged(nameof(skytextday));
             }
         }
         [XmlAttribute(AttributeName = "date")]
         public string date
         {
-            get { return _date; }
+            get => _date;
             set
             {
                 _date = value;
-                OnPropertChanged(string.Empty);
+                OnPropertChanged(nameof(date));
             }
         }
         [XmlAttribute(AttributeName = "day")]
         public string day
         {
-            get { return _day; }
+            get => _day;
             set
             {
                 _day = value;
-                OnPropertChanged(string.Empty);
+                OnPropertChanged(nameof(day));
             }
         }
         [XmlAttribute(AttributeName = "shortday")]
         public string shortday
         {
-            get { return _shortday; }
+            get => _shortday;
             set
             {
                 _shortday = value;
-                OnPropertChanged(string.Empty);
+                OnPropertChanged(nameof(shortday));
             }
         }
         [XmlAttribute(AttributeName = "precip")]
         public string precip
         {
-            get { return _precip; }
+            get => _precip;
             set
             {
                 _precip = value;
-                OnPropertChanged(string.Empty);
+                OnPropertChanged(nameof(precip));
             }
         }
         private void OnPropertChanged(string propertyName)
         {
-            if (PropertyChanged != null)
-            { PropertyChanged(this, new PropertyChangedEventArgs(propertyName)); }
+            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
     }
     public class Toolbar
@@ -445,27 +468,28 @@ namespace Task1.Model
         private string _minversion = string.Empty;
         public event PropertyChangedEventHandler PropertyChanged;
         [XmlAttribute(AttributeName = "timewindow")]
-        public string timewindow {
-            get { return _timewindow; }
+        public string timewindow
+        {
+            get => _timewindow;
             set
             {
                 _timewindow = value;
-                OnPropertChanged(string.Empty);
+                OnPropertChanged(nameof(timewindow));
             }
         }
         [XmlAttribute(AttributeName = "minversion")]
-        public string minversion {
-            get { return _minversion; }
+        public string minversion
+        {
+            get => _minversion;
             set
             {
                 _minversion = value;
-                OnPropertChanged(string.Empty);
+                OnPropertChanged(nameof(minversion));
             }
         }
         private void OnPropertChanged(string propertyName)
         {
-            if (PropertyChanged != null)
-            { PropertyChanged(this, new PropertyChangedEventArgs(propertyName)); }
+            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

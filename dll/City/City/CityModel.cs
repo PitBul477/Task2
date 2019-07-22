@@ -4,8 +4,10 @@ using System.ComponentModel;
 using System.IO;
 using System.Net;
 using System.Xml.Serialization;
+using AppSettings;
+using SerialCity;
 
-namespace Task1.Model
+namespace City
 {
     //класс "Модель города"
     public class CityModel : INotifyPropertyChanged

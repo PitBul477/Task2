@@ -5,7 +5,7 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:properties="clr-namespace:Task1.Properties"
-	xmlns:vm="clr-namespace:Task1.ViewModel"
+	xmlns:vm="clr-namespace:MyVM;assembly=MyVM"
 	Title="{x:Static properties:Resources.TitleWindow}"
 	Width="793.697"
 	Height="485"

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace Task1
+namespace MyCommand
 {
     //класс "Трансляция комманды"
     public class RelayCommand : ICommand
